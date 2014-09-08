@@ -10,6 +10,8 @@ package lab2;
  * @author wsuetholz
  */
 public class CreditsValidator {
+    private static final double MIN_CREDITS = 0.5;
+    private static final double MAX_CREDITS = 4.0;
 
     /**
      * Validates the grade point credits with the the school wide restrictions applied.
@@ -37,7 +39,7 @@ public class CreditsValidator {
      * @return true if credits pass school wide criteria, false otherwise.
      */
     public static boolean validCreditsValue(double credits) {
-	if (credits < 0.5 || credits > 4.0) {
+	if (credits < MIN_CREDITS || credits > MAX_CREDITS) {
 	    return false;
 	}
 	
