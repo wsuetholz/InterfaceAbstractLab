@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package lab1;
+package lab2;
 
 import javax.swing.JOptionPane;
 
@@ -30,9 +30,7 @@ public class Main {
 	    credits = (Math.round(credits*10) / 10.0);	// round to nearest tenths place
 	    course.setCredits(credits);
 	    
-	    // Would have been nice here to be able to easily tell all the courses that 
-	    // allowed setting prerequisites, but that wouldn't have changed needing
-	    // to know which course in order to use the correct prerequisite...
+	    // Need to know which course in order to use the correct prerequisite...
 	    if (course instanceof IntroJavaCourse) {
 		IntroJavaCourse introJavaCourse = (IntroJavaCourse) course;
 		introJavaCourse.setPrerequisites("Introduction To Programming");
@@ -52,16 +50,13 @@ public class Main {
 	    sb.append("\nCourse Credits: ");
 	    sb.append(course.getCredits());
 
-	    // Would have been nice here to be able to easily tell all the courses that 
-	    // had the getter for prerequisites.  That would have been useful here.
-	    if (course instanceof IntroJavaCourse) {
-		IntroJavaCourse introJavaCourse = (IntroJavaCourse) course;
+	    // Unlike with the abstract class version of this, we are able to
+	    // be able to easily tell all the courses that we have a getter 
+	    // for prerequisites.
+	    if (course instanceof CoursePrerequisites ) {
+		CoursePrerequisites coursePrerequisites = (CoursePrerequisites) course;
 		sb.append("\nCourse Prerequisites: ");
-		sb.append(introJavaCourse.getPrerequisites());
-	    } else if (course instanceof AdvancedJavaCourse) {
-		AdvancedJavaCourse advancedJavaCourse = (AdvancedJavaCourse) course;
-		sb.append("\nCourse Prerequisites: ");
-		sb.append(advancedJavaCourse.getPrerequisites());
+		sb.append(coursePrerequisites.getPrerequisites());
 	    }
 	    sb.append("\n\n");
 	}

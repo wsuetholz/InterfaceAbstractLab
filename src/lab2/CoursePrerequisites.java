@@ -9,7 +9,7 @@ package lab2;
  *
  * @author wsuetholz
  */
-public interface CoursePrequisites {
+public interface CoursePrerequisites {
 
     public abstract String getPrerequisites();
 
